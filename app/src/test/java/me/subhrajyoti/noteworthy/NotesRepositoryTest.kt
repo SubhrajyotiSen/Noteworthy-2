@@ -1,15 +1,20 @@
 package me.subhrajyoti.noteworthy
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import me.subhrajyoti.noteworthy.data.NoteModel
 import me.subhrajyoti.noteworthy.data.NotesRepository
 import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
 class NotesRepositoryTest {
 
     private lateinit var notesRepository: NotesRepository
+
+    @get:Rule
+    val rule = InstantTaskExecutorRule()
 
     @Before
     fun init() {
@@ -25,7 +30,7 @@ class NotesRepositoryTest {
         )
         notesRepository.addNote(note)
 
-        Assert.assertEquals(notesRepository.getNotesCount(), 1)
+        Assert.assertEquals(notesRepository.notes.value?.size, 1)
     }
 
     @Test

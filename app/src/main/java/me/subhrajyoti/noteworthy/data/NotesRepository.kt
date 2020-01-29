@@ -1,19 +1,19 @@
 package me.subhrajyoti.noteworthy.data
 
+import androidx.lifecycle.MutableLiveData
+
 class NotesRepository {
 
-    private val notes = mutableListOf<NoteModel>()
-
-    fun getAllNotes() = notes
-
-    fun getNotesCount() = notes.size
+    private val notesList = mutableListOf<NoteModel>()
+    val notes = MutableLiveData(notesList)
 
     fun addNote(noteModel: NoteModel) {
-        notes.add(noteModel)
+        notesList.add(noteModel)
+        notes.postValue(notesList)
     }
 
     fun getNote(id: String): NoteModel? {
-        return notes.find {
+        return notesList.find {
             it.id == id
         }
     }
