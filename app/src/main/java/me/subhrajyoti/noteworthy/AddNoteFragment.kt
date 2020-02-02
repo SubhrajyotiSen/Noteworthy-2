@@ -17,7 +17,7 @@ class AddNoteFragment : CircularRevealFragment(R.layout.fragment_add_note) {
 
         notesViewModel = ViewModelProvider(
             this,
-            (requireActivity() as MainActivity).viewModelFactory
+            (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
 
         save_note_fab.setOnClickListener {

@@ -17,7 +17,7 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
 
         notesViewModel = ViewModelProvider(
             this,
-            (requireActivity() as MainActivity).viewModelFactory
+            (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
 
         notesAdapter = NotesAdapter()

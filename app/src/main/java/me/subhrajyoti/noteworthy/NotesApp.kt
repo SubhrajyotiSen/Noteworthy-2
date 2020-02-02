@@ -5,10 +5,11 @@ import me.subhrajyoti.noteworthy.data.NotesRepository
 
 class NotesApp : Application() {
 
-    lateinit var notesRepository: NotesRepository
+    lateinit var viewModelFactory: NotesViewModelFactory
 
     override fun onCreate() {
         super.onCreate()
-        notesRepository = NotesRepository()
+        val notesRepository = NotesRepository()
+        viewModelFactory = NotesViewModelFactory(notesRepository)
     }
 }
