@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Noteworthy</string>
     <string name="add_note">Add note</string>
+    <string name="new_note">New note</string>
+    <string name="note_title_hint">Note title</string>
+    <string name="note_content_hint">Type away…</string>
 </resources>
