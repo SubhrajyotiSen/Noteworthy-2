@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="colorTransitionStart">@color/design_dark_default_color_secondary</color>
+    <color name="colorTransitionEnd">@color/design_dark_default_color_surface</color>
+
 </resources>
