@@ -36,8 +36,8 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
         add_note_fab.setOnClickListener {
             val addNoteFragment = AddNoteFragment()
             addNoteFragment.arguments = Bundle().apply {
-                putFloat("START_X", (add_note_fab.x + add_note_fab.width / 2))
-                putFloat("START_Y", (add_note_fab.y + add_note_fab.height / 2))
+                putFloat(CircularRevealFragment.START_X, (add_note_fab.x + add_note_fab.width / 2))
+                putFloat(CircularRevealFragment.START_Y, (add_note_fab.y + add_note_fab.height / 2))
             }
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, addNoteFragment)
