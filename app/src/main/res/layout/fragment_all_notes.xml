@@ -32,4 +32,14 @@
 
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:id="@+id/add_note_fab"
+        android:src="@drawable/ic_add"
+        android:contentDescription="@string/add_note"
+        android:layout_margin="16dp"
+        android:layout_gravity="end|bottom"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
