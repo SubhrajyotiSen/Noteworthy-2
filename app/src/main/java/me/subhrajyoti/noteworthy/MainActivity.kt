@@ -5,9 +5,13 @@ import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var viewModelFactory: NotesViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        viewModelFactory = NotesViewModelFactory(this)
 
         val allNotesFragment = AllNotesFragment()
         val transaction = supportFragmentManager.beginTransaction()

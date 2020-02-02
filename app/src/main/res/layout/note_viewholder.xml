@@ -29,7 +29,7 @@
         tools:text="This is a note description" />
 
     <TextView
-        android:id="@+id/last_updated_content_textView"
+        android:id="@+id/creation_date_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
