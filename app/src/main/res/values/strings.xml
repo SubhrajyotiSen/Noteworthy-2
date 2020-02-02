@@ -4,4 +4,5 @@
     <string name="new_note">New note</string>
     <string name="note_title_hint">Note title</string>
     <string name="note_content_hint">Type away…</string>
+    <string name="empty_note_title_error_message">Note title cannot be empty</string>
 </resources>

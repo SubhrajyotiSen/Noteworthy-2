@@ -24,9 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/note_title_hint"
+            android:id="@+id/note_title_textInputLayout"
             android:layout_marginBottom="24dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/note_title_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -39,9 +41,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/note_content_textInputLayout"
             android:hint="@string/note_content_hint">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/note_content_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="16sp"
