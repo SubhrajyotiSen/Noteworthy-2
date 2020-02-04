@@ -15,7 +15,7 @@ class ViewNoteFragment : Fragment(R.layout.fragment_view_note) {
         const val TAG = "ViewNoteFragment"
     }
 
-    private lateinit var notesViewModel: NotesViewModel
+    lateinit var notesViewModel: NotesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +37,12 @@ class ViewNoteFragment : Fragment(R.layout.fragment_view_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         notesViewModel.currentNote.observe(viewLifecycleOwner, Observer { note ->
-            note_title_textView.text = note.title
-            note_content_textView.text = note.content
-            note_creation_date_textView.text =
-                DateUtil.convertTimestampToReadableDateTime(note.dateOfCreation)
+            if (note != null) {
+                note_title_textView.text = note.title
+                note_content_textView.text = note.content
+                note_creation_date_textView.text =
+                    DateUtil.convertTimestampToReadableDateTime(note.dateOfCreation)
+            }
         })
     }
 }

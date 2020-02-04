@@ -9,7 +9,7 @@ class NotesViewModel(
     private val notesRepository: NotesRepository
 ) : ViewModel() {
 
-    val currentNote = MutableLiveData<NoteModel>()
+    val currentNote = MutableLiveData<NoteModel?>()
 
     fun getAllNotes() = notesRepository.notes
 
