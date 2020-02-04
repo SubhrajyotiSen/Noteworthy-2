@@ -14,7 +14,6 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
     }
 
     private lateinit var notesViewModel: NotesViewModel
-    private lateinit var notesAdapter: NotesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +22,14 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
             this,
             (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
-
-        notesAdapter = NotesAdapter()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val notesAdapter = NotesAdapter { noteId ->
+            openNote(noteId, savedInstanceState)
+        }
 
         all_notes_recyclerView.adapter = notesAdapter
 
@@ -39,6 +40,19 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
 
         add_note_fab.setOnClickListener {
             startAddNotesFragment(savedInstanceState)
+        }
+    }
+
+    private fun openNote(noteId: String, savedInstanceState: Bundle?) {
+        if (savedInstanceState == null || parentFragmentManager.findFragmentByTag(ViewNoteFragment.TAG) == null) {
+            val viewNoteFragment = ViewNoteFragment()
+            viewNoteFragment.arguments = Bundle().apply {
+                putString(ViewNoteFragment.NOTE_ID, noteId)
+            }
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, viewNoteFragment, ViewNoteFragment.TAG)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
     }
 

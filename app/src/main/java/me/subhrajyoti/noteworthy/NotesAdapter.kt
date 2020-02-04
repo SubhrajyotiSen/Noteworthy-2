@@ -3,6 +3,7 @@ package me.subhrajyoti.noteworthy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -20,13 +21,16 @@ private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<NoteModel> () {
     }
 }
 
-class NotesAdapter : ListAdapter<NoteModel, NotesAdapter.NoteViewHolder>(DIFF_CALLBACK) {
+class NotesAdapter (
+    private val noteSelected: (String) -> Unit
+) : ListAdapter<NoteModel, NotesAdapter.NoteViewHolder>(DIFF_CALLBACK) {
 
 
     inner class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val noteTitleTextView: TextView = view.findViewById(R.id.note_title_textView)
         val noteContentTextView: TextView = view.findViewById(R.id.note_content_textView)
         val noteCreationDateTextView: TextView = view.findViewById(R.id.creation_date_textView)
+        val noteContainerRootView: LinearLayout = view.findViewById(R.id.note_container_rootView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -41,6 +45,9 @@ class NotesAdapter : ListAdapter<NoteModel, NotesAdapter.NoteViewHolder>(DIFF_CA
             noteTitleTextView.text = note.title
             noteContentTextView.text = note.content
             noteCreationDateTextView.text = DateUtil.convertTimestampToReadableDateTime(note.dateOfCreation)
+            noteContainerRootView.setOnClickListener {
+                noteSelected(note.id)
+            }
         }
     }
 }
