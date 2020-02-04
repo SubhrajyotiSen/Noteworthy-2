@@ -16,13 +16,17 @@ class AddNoteFragment : CircularRevealFragment(R.layout.fragment_add_note) {
 
     private lateinit var notesViewModel: NotesViewModel
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         notesViewModel = ViewModelProvider(
             this,
             (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         save_note_fab.setOnClickListener {
             val noteTitle = note_title_editText.text?.toString()
