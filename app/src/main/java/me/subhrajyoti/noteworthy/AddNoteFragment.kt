@@ -10,6 +10,10 @@ import me.subhrajyoti.noteworthy.utils.NoteValidator
 
 class AddNoteFragment : CircularRevealFragment(R.layout.fragment_add_note) {
 
+    companion object {
+        const val TAG = "AddNoteFragment"
+    }
+
     private lateinit var notesViewModel: NotesViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
