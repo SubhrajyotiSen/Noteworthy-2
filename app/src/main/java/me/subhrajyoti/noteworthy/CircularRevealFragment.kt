@@ -22,7 +22,7 @@ open class CircularRevealFragment(@LayoutRes layout: Int) : Fragment(layout) {
         super.onViewCreated(view, savedInstanceState)
 
         if (arguments != null && requireArguments().containsKey(START_X) &&
-            requireArguments().containsKey(START_Y)
+            requireArguments().containsKey(START_Y) && savedInstanceState == null
         ) {
             view.addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
                 override fun onLayoutChange(
