@@ -19,7 +19,7 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
         super.onCreate(savedInstanceState)
 
         notesViewModel = ViewModelProvider(
-            this,
+            requireActivity(),
             (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
     }

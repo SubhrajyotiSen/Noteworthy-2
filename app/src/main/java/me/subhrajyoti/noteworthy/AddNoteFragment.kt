@@ -20,7 +20,7 @@ class AddNoteFragment : CircularRevealFragment(R.layout.fragment_add_note) {
         super.onCreate(savedInstanceState)
 
         notesViewModel = ViewModelProvider(
-            this,
+            requireActivity(),
             (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
     }

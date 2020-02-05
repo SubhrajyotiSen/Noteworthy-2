@@ -23,7 +23,7 @@ class ViewNoteFragment : Fragment(R.layout.fragment_view_note) {
         postponeEnterTransition()
 
         notesViewModel = ViewModelProvider(
-            this,
+            requireActivity(),
             (requireActivity().applicationContext as NotesApp).viewModelFactory
         ).get(NotesViewModel::class.java)
 
