@@ -10,6 +10,7 @@ import me.subhrajyoti.noteworthy.NotesViewModel
 import me.subhrajyoti.noteworthy.R
 import me.subhrajyoti.noteworthy.data.NoteModel
 import me.subhrajyoti.noteworthy.ui.CircularRevealFragment
+import me.subhrajyoti.noteworthy.ui.view.ViewNoteFragment
 import me.subhrajyoti.noteworthy.utils.NoteValidator
 
 
@@ -53,9 +54,21 @@ class AddNoteFragment : CircularRevealFragment(R.layout.fragment_add_note) {
                     content = noteContent!!
                 )
                 notesViewModel.addNote(note)
-                requireActivity().onBackPressed()
+                openNote(note.id)
             }
         }
+    }
+
+    private fun openNote(noteId: String) {
+        val viewNoteFragment =
+            ViewNoteFragment()
+        viewNoteFragment.arguments = Bundle().apply {
+            putString(ViewNoteFragment.NOTE_ID, noteId)
+        }
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, viewNoteFragment, ViewNoteFragment.TAG)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     private fun validateNoteTitle(noteTitle: String?): Boolean {
