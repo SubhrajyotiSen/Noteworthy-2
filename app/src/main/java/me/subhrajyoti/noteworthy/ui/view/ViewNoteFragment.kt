@@ -2,7 +2,9 @@ package me.subhrajyoti.noteworthy.ui.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_view_note.*
@@ -35,6 +37,17 @@ class ViewNoteFragment : Fragment(R.layout.fragment_view_note) {
 
             notesViewModel.getNote(noteId)
         }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // this prevents ViewNoteFragment from overlapping on top of AllNotesFragment
+                parentFragmentManager.popBackStack(
+                    parentFragmentManager.getBackStackEntryAt(0).id,
+                    POP_BACK_STACK_INCLUSIVE
+                )
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
