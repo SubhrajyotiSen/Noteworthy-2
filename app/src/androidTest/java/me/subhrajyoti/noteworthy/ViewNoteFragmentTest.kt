@@ -6,6 +6,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import me.subhrajyoti.noteworthy.data.NoteModel
+import me.subhrajyoti.noteworthy.ui.view.ViewNoteFragment
 import org.junit.Test
 import org.junit.runner.RunWith
 

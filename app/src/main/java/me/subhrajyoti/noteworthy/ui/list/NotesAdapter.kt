@@ -1,4 +1,4 @@
-package me.subhrajyoti.noteworthy
+package me.subhrajyoti.noteworthy.ui.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import me.subhrajyoti.noteworthy.R
 import me.subhrajyoti.noteworthy.data.NoteModel
 import me.subhrajyoti.noteworthy.utils.DateUtil
 
@@ -23,7 +24,9 @@ private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<NoteModel> () {
 
 class NotesAdapter (
     private val noteSelected: (String) -> Unit
-) : ListAdapter<NoteModel, NotesAdapter.NoteViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<NoteModel, NotesAdapter.NoteViewHolder>(
+    DIFF_CALLBACK
+) {
 
 
     inner class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {

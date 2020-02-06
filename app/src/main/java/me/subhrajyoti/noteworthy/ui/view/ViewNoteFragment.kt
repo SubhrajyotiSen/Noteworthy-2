@@ -1,4 +1,4 @@
-package me.subhrajyoti.noteworthy
+package me.subhrajyoti.noteworthy.ui.view
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_view_note.*
+import me.subhrajyoti.noteworthy.NotesApp
+import me.subhrajyoti.noteworthy.NotesViewModel
+import me.subhrajyoti.noteworthy.R
 import me.subhrajyoti.noteworthy.utils.DateUtil
 
 class ViewNoteFragment : Fragment(R.layout.fragment_view_note) {

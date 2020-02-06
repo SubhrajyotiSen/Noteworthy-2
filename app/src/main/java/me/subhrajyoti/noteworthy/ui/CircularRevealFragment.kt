@@ -1,4 +1,4 @@
-package me.subhrajyoti.noteworthy
+package me.subhrajyoti.noteworthy.ui
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import me.subhrajyoti.noteworthy.R
 import kotlin.math.sqrt
 
 open class CircularRevealFragment(@LayoutRes layout: Int) : Fragment(layout) {
@@ -50,8 +51,12 @@ open class CircularRevealFragment(@LayoutRes layout: Int) : Fragment(layout) {
 
                     val colorAnimator = ValueAnimator().apply {
                         setIntValues(
-                            ContextCompat.getColor(requireContext(), R.color.colorTransitionStart),
-                            ContextCompat.getColor(requireContext(), R.color.colorTransitionEnd)
+                            ContextCompat.getColor(requireContext(),
+                                R.color.colorTransitionStart
+                            ),
+                            ContextCompat.getColor(requireContext(),
+                                R.color.colorTransitionEnd
+                            )
                         )
                         setEvaluator(ArgbEvaluator())
                         addUpdateListener { valueAnimator -> view.setBackgroundColor((valueAnimator.animatedValue as Int)) }

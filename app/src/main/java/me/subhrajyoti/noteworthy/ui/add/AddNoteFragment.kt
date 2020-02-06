@@ -1,11 +1,15 @@
-package me.subhrajyoti.noteworthy
+package me.subhrajyoti.noteworthy.ui.add
 
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_add_note.*
+import me.subhrajyoti.noteworthy.NotesApp
+import me.subhrajyoti.noteworthy.NotesViewModel
+import me.subhrajyoti.noteworthy.R
 import me.subhrajyoti.noteworthy.data.NoteModel
+import me.subhrajyoti.noteworthy.ui.CircularRevealFragment
 import me.subhrajyoti.noteworthy.utils.NoteValidator
 
 
