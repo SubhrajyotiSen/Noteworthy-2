@@ -35,7 +35,7 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
 
         val notesAdapter =
             NotesAdapter { noteId ->
-                openNote(noteId, savedInstanceState)
+                openNote(noteId)
             }
 
         all_notes_recyclerView.adapter = notesAdapter
@@ -46,36 +46,31 @@ class AllNotesFragment : Fragment(R.layout.fragment_all_notes) {
             })
 
         add_note_fab.setOnClickListener {
-            startAddNotesFragment(savedInstanceState)
+            startAddNotesFragment()
         }
     }
 
-    private fun openNote(noteId: String, savedInstanceState: Bundle?) {
-        if (savedInstanceState == null || parentFragmentManager.findFragmentByTag(ViewNoteFragment.TAG) == null) {
-            val viewNoteFragment =
-                ViewNoteFragment()
-            viewNoteFragment.arguments = Bundle().apply {
-                putString(ViewNoteFragment.NOTE_ID, noteId)
-            }
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, viewNoteFragment, ViewNoteFragment.TAG)
-            transaction.addToBackStack(null)
-            transaction.commit()
+    private fun openNote(noteId: String) {
+        val viewNoteFragment =
+            ViewNoteFragment()
+        viewNoteFragment.arguments = Bundle().apply {
+            putString(ViewNoteFragment.NOTE_ID, noteId)
         }
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, viewNoteFragment, ViewNoteFragment.TAG)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
-    private fun startAddNotesFragment(savedInstanceState: Bundle?) {
-        val addNoteFragment: AddNoteFragment
-        if (savedInstanceState == null || parentFragmentManager.findFragmentByTag(AddNoteFragment.TAG) == null) {
-            addNoteFragment  = AddNoteFragment()
-            addNoteFragment.arguments = Bundle().apply {
-                putFloat(CircularRevealFragment.START_X, (add_note_fab.x + add_note_fab.width / 2))
-                putFloat(CircularRevealFragment.START_Y, (add_note_fab.y + add_note_fab.height / 2))
-            }
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, addNoteFragment, AddNoteFragment.TAG)
-            transaction.addToBackStack(null)
-            transaction.commit()
+    private fun startAddNotesFragment() {
+        val addNoteFragment = AddNoteFragment()
+        addNoteFragment.arguments = Bundle().apply {
+            putFloat(CircularRevealFragment.START_X, (add_note_fab.x + add_note_fab.width / 2))
+            putFloat(CircularRevealFragment.START_Y, (add_note_fab.y + add_note_fab.height / 2))
         }
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, addNoteFragment, AddNoteFragment.TAG)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
