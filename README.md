@@ -1,6 +1,19 @@
 # Noteworthy
 A minimal note taking app following Material Design guidelines
 
+## Build and Run
+The app does not need any special configuration to run
+
+To build the project, run 
+
+`./gradlew build`
+
+The app contains some unit and UI tests that can be run as folllows
+
+`./gradlew test`
+
+`./gradlew connectedAndroidTest`
+
 ## Screenshots
 <img src="https://raw.githubusercontent.com/SubhrajyotiSen/Noteworthy-2/master/screenshots/all_notes.jpg" width="360">
 <img src="https://raw.githubusercontent.com/SubhrajyotiSen/Noteworthy-2/master/screenshots/add_note.jpg" width="360">
