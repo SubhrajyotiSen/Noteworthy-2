@@ -27,6 +27,8 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="5"
+            app:reverseLayout="true"
+            app:stackFromEnd="true"
             tools:listitem="@layout/note_viewholder"
             android:orientation="vertical"/>
 
