@@ -17,4 +17,24 @@ class NotesRepository {
             it.id == id
         }
     }
+
+    /**
+     * Toggles bookmark state for given note id
+     *
+     * If bookmarked, remove from bookmark and vice versa
+     */
+    fun toggleBookmarkForNote(id: String) {
+        var index = -1
+        for (i in notesList.indices) {
+            if (notesList[i].id == id) {
+                index = i
+                break
+            }
+        }
+        if (index != -1) {
+            val note = notesList[index]
+            notesList[index].isBookmarked = !note.isBookmarked
+            notes.postValue(notesList)
+        }
+    }
 }

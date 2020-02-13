@@ -64,4 +64,26 @@ class NotesRepositoryTest {
 
         Assert.assertNull(fetchedNote)
     }
+
+    /**
+     * Add a note to the NoteRepository and then bookmark the same note.
+     * Verify that the note got added to bookmark.
+     */
+    @Test
+    fun `verify note got bookmarked`() {
+        val note = NoteModel(
+            dateOfCreation = System.currentTimeMillis(),
+            title = "Hakuna Matata",
+            content = "It means no worries"
+        )
+        notesRepository.addNote(note)
+        notesRepository.toggleBookmarkForNote(id = note.id)
+
+        var fetchedNote = notesRepository.getNote(id = note.id)
+        Assert.assertTrue(fetchedNote!!.isBookmarked)
+
+        notesRepository.toggleBookmarkForNote(id = note.id)
+        fetchedNote = notesRepository.getNote(id = note.id)
+        Assert.assertFalse(fetchedNote!!.isBookmarked)
+    }
 }
