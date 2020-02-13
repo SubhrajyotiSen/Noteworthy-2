@@ -6,5 +6,6 @@ data class NoteModel(
     val id: String = UUID.randomUUID().toString(),
     val dateOfCreation: Long,
     val title: String,
-    val content: String
+    val content: String,
+    var isBookmarked: Boolean = false
 )
