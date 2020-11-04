@@ -10,8 +10,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run unit tests
       run: ./gradlew app:test
-    - name: run tests
+
+    - name: Run Android tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
-        script: ./gradlew connectedCheck
+        script: ./gradlew connectedAndroidTest
